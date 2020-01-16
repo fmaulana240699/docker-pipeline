@@ -1,5 +1,5 @@
 - hosts: server
-- tasks:
+  tasks:
      - name: install python-docker centos
        yum:
          name: python-docker
