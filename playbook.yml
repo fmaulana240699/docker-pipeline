@@ -1,0 +1,24 @@
+- hosts: server
+- tasks:
+     - name: install python-docker centos
+       yum:
+         name: python-docker
+         state: present
+       when:
+       - ansible_distribution == "CentOS"
+     - name: install pyhton-docker ubuntu
+       apt:
+         name: python-docker
+         state: present
+       when:
+       - ansible_distribution == "Ubuntu"
+     - name: create container
+       docker_container:
+         name: container_by_jenkins
+         image: fajar
+         state: started
+         published_ports:
+           - 9000:80
+         recreate: yes
+         interactive: yes
+         detach: yes
