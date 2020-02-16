@@ -8,7 +8,7 @@
        - ansible_distribution == "CentOS"
      - name: install pyhton-docker ubuntu
        apt:
-         name: python-docker
+         name: python3-docker
          state: present
        when:
        - ansible_distribution == "Ubuntu"
