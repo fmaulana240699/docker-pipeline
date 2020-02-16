@@ -15,7 +15,7 @@
      - name: create container
        docker_container:
          name: container_by_jenkins
-         image: fmaulana24/fajar_baru
+         image: fmaulana24/test_baru
          state: started
          published_ports:
            - 9000:80
