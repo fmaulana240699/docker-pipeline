@@ -48,6 +48,12 @@ pipeline {
       }
     }
 
+    stage('Check Images') {
+      steps {
+        sh 'docker images'
+      }
+    }
+
     stage('Deploy Images') {
       steps {
         sh 'docker run -tid -p 80:80 fmaulana24/testing-pipeline:v1'
