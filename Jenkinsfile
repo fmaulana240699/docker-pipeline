@@ -24,5 +24,34 @@ pipeline {
       }
     }
 
+    stage('Build Images') {
+      parallel {
+        stage('Build Images') {
+          steps {
+            sh 'docker build -t testing-pipeline . '
+          }
+        }
+
+        stage('Tag Images') {
+          steps {
+            sh 'docker tag testing-pipeline fmaulana24/testing-pipeline:v1'
+          }
+        }
+
+        stage('verify images') {
+          steps {
+            sh 'docker images'
+          }
+        }
+
+      }
+    }
+
+    stage('Deploy Images') {
+      steps {
+        sh 'docker run -tid -p 80:80 fmaulana24/testing-pipeline:v1'
+      }
+    }
+
   }
 }
