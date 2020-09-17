@@ -27,9 +27,9 @@ pipeline {
 
     stage('Build Images') {
       parallel {
-        stage('Build Images') {
+        stage('Verify Images') {
           steps {
-            sh 'docker build -t testing-pipeline . '
+            sh 'docker images'
           }
         }
 
@@ -39,9 +39,9 @@ pipeline {
           }
         }
 
-        stage('verify images') {
+        stage('Build Images') {
           steps {
-            sh 'docker images'
+            sh 'docker build -t testing-pipeline . '
           }
         }
 
