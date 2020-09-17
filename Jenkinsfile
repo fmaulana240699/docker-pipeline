@@ -3,22 +3,15 @@ pipeline {
   stages {
     stage('Clone Source') {
       parallel {
-        stage('Git Checks') {
-          steps {
-            git(url: 'https://github.com/fmaulana240699/docker-pipeline.git', branch: 'master', poll: true)
-          }
-        }
-
-        stage('Cloning Source') {
-          steps {
-            sh 'rm -rf *'
-            sh 'git clone https://github.com/fmaulana240699/docker-pipeline.git'
-          }
-        }
-
-        stage('Verify Clone') {
+        stage('Verify Cloning Source') {
           steps {
             sh 'ls -l'
+          }
+        }
+
+        stage('Cloning CODE') {
+          steps {
+            git(url: 'https://github.com/fmaulana240699/docker-pipeline.git', branch: 'master')
           }
         }
 
