@@ -11,6 +11,7 @@ pipeline {
 
         stage('Cloning Source') {
           steps {
+            sh 'rm -rf *'
             sh 'git clone https://github.com/fmaulana240699/docker-pipeline.git'
           }
         }
