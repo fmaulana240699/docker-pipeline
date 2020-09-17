@@ -35,7 +35,7 @@ pipeline {
 
         stage('Tag Images') {
           steps {
-            sh 'docker images'
+            sh 'docker tag testing-pipeline fmaulana42/testing-pipeline:v1'
           }
         }
 
